@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/04 09:29:37 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/04 10:03:17 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 //hooks
 int close_win(t_fractal *window);
 int key_hook(int key, t_fractal *window);
-int mouse_hook(int key, t_fractal f);
+int mouse_hook(int key, t_data img, t_fractal f);
 
 
 int	zoom_in(t_fractal *f);

@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:57:46 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/09/26 14:29:33 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:35:11 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	write_fractal(t_fractal *f, t_data *img, char *type)
 	int y;
 	double real_pixel;
 	double imaginary_pixel;
-
-	(void)type;
 
 	y = -1;
 	while (++y < HEIGHT)
@@ -38,5 +36,4 @@ void	write_fractal(t_fractal *f, t_data *img, char *type)
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, img->img, 0, 0);
-
 }

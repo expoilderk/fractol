@@ -1,4 +1,4 @@
-NAME = fractal
+NAME = fractol
 HEADER = fractal.h
 LIBFT = libft
 OS = $(shell uname)
@@ -12,10 +12,10 @@ CC = cc
 RM = rm -f
 
 ifeq ($(OS), Linux)
-	MLX = ./mlx_linux
+	MLX = ./mlx/mlx_linux
 	MLX_CMD = -L $(MLX) -l mlx -L/usr/lib -I $(MLX) -lXext -lX11 -lm -lz
 else
-	MLX = ./mlx_mac
+	MLX = ./mlx/mlx_mac
 	MLX_CMD = -L $(MLX) -l mlx -framework OpenGL -framework AppKit
 endif
 

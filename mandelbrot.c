@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:20:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/09/26 14:26:44 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:47:28 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	mandelbrot(t_data *img, int x, int y, double real_c, double imaginary_c)
 	double	imaginary_z;
 	double	temp;
 	int		is_set;
-
 
 	real_z = 0;
 	imaginary_z = 0;
@@ -37,18 +36,10 @@ void	mandelbrot(t_data *img, int x, int y, double real_c, double imaginary_c)
 		real_z = real_z * real_z - imaginary_z * imaginary_z + real_c;
 		imaginary_z = temp;
 	}
-
 	if (is_set == 1)
-	{
-//		mlx_pixel_put(fractal->mlx, fractal->win, x, y, 0xF8FFAE);
 		my_mlx_pixel_put(img, x, y, 0xF8FFAE);
-	}
 	else
-	{
-//		mlx_pixel_put(fractal->mlx, fractal->win, x, y,  0x43C6AC);
 		my_mlx_pixel_put(img, x, y, 0x43C6AC);
-	}
-
 }
 
 
