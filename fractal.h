@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/04 10:03:17 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:21:34 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_fractal
-{
-	void	*mlx;
-	void	*win;
-	double	real_min;
-	double	real_max;
-	double	imaginary_min;
-	double	imaginary_max;
-	double	real_k;
-	double	imaginary_k;
-} t_fractal;
-
 typedef struct	s_data 
 {
 	void	*img;
@@ -44,20 +32,43 @@ typedef struct	s_data
 	int		endian;
 } t_data;
 
-void	mandelbrot(t_data *img, int x, int y, double real_c, double imaginary_c);
-void	julia(t_fractal *fractal, int x, int y, double real_z, double imaginary_z);
-void	write_fractal(t_fractal *f, t_data *img, char *type);
-void	user_guide();
-t_fractal init_fractol(char **argv);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-//void	create_img(char **argv);
+typedef struct s_fractal
+{
+	t_data	img;
+	void	*mlx;
+	void	*win;
+	double	real_min;
+	double	real_max;
+	double	imaginary_min;
+	double	imaginary_max;
+	double	real_k;
+	double	imaginary_k;
+	int		iterations;
+	char	type;
+} t_fractal;
 
+
+// Mandelbrot
+void	mandelbrot(t_fractal *f, int x, int y, double real_c, double imaginary_c);
+void	render_mandelbrot(t_fractal *f);
+
+// Julia
+void	julia(t_fractal *f, int x, int y, double real_z, double imaginary_z);
+void	render_julia(t_fractal *f);
+
+// Fractol
+void	init(t_fractal *f);
+
+// Utils
+void	check(t_fractal *f, int argc, char **argv);
+void	help();
+void	my_mlx_pixel_put(t_fractal *f, int x, int y, int color);
+void	choose(t_fractal *f);
 
 //hooks
 int close_win(t_fractal *window);
 int key_hook(int key, t_fractal *window);
-int mouse_hook(int key, t_data img, t_fractal f);
-
+int mouse_hook(int key, t_fractal f);
 
 int	zoom_in(t_fractal *f);
 int	zoom_out(t_fractal *f);

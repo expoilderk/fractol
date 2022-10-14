@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:30:23 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/04 10:02:42 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:57:39 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int key_hook(int key, t_fractal *window) // Função que fazer um parser para ch
     return (0);
 }
 
-int mouse_hook(int key, t_data img, t_fractal prog) // Função que fazer um parser para chamar as ações do scroll do mouse
+int mouse_hook(int key, t_fractal prog) // Função que fazer um parser para chamar as ações do scroll do mouse
 {
     if (key == 4)
 	{
 		zoom_in(&prog);
-		write_fractal(&prog, &img, "mandelbrot");
+//		write_fractal(&prog, "mandelbrot");
 	}
 	else if(key == 5)
 	{

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_fractol.c                                     :+:      :+:    :+:   */
+/*   user_guide.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 11:16:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/09/26 11:26:16 by mreis-me         ###   ########.fr       */
+/*   Created: 2022/09/20 09:14:49 by mreis-me          #+#    #+#             */
+/*   Updated: 2022/10/13 21:57:05 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-t_fractal init_fractol(char **argv)
+void	help()
 {
-	t_fractal init;
-
-	init.mlx = mlx_init();
-
-	init.real_min = -2.0;
-	init.real_max = 2;
-	init.imaginary_min = -2.0;
-	init.imaginary_max = init.imaginary_min + (init.real_max - init.real_min) * HEIGHT / WIDTH;
-	
-	if(ft_strncmp(argv[1], "julia", 5) == 0)
-	{
-		init.real_k = atof(argv[2]); //criar minha propria atof
-		init.imaginary_k = atof(argv[3]); //criar minha propria atof
-	}
-
-	return (init);
+	ft_printf("--- Invalid Argument ---\n");
+	ft_printf("\n\n");
+	ft_printf("Correct input: ./fractal [fractal_type] [-options]\n\n");
+	exit(EXIT_FAILURE);
+	//implementar instruções de como utilizar o programa
+	//usar cores no printf
 }
