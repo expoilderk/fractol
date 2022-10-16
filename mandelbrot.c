@@ -6,49 +6,43 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:20:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/14 00:27:05 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:14:35 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-void	mandelbrot(t_fractal *f, int x, int y, double real_c, double imaginary_c)
+int	mandelbrot(t_fractal *f)
 {
-	int		iterations;
-	double	real_z;
-	double	imaginary_z;
+	int		it;
 	double	temp;
 	int		is_set;
 
-	real_z = 0;
-	imaginary_z = 0;
-	iterations = -1;
+	f->z.r = 0;
+	f->z.i = 0;
+	it = -1;
 	is_set = 1;
 
-	while (++iterations < MAX_ITER)
+	while (++it < f->max_iterations)
 	{
-		if((real_z * real_z + imaginary_z * imaginary_z) > 4)
+		if((f->z.r * f->z.r + f->z.i * f->z.i) > 4)
 		{
 			is_set = 0;
 			break ;
 			//return (iterations); Retornar o número de iterações para trabalhar a cor
 		}
-		temp = 2 * real_z * imaginary_z + imaginary_c;
-		real_z = real_z * real_z - imaginary_z * imaginary_z + real_c;
-		imaginary_z = temp;
+		temp = 2 * f->z.r * f->z.i + f->c.i;
+		f->z.r = f->z.r * f->z.r - f->z.i * f->z.i + f->c.r;
+		f->z.i = temp;
 	}
-	if (is_set == 1)
-		my_mlx_pixel_put(f, x, y, 0xF8FFAE);
-	else
-		my_mlx_pixel_put(f, x, y, 0x43C6AC);
+	return (is_set); //retornar o set apenas por enquanto, até implementar cor
 }
 
 void	render_mandelbrot(t_fractal *f)
 {
 	int x;
 	int y;
-	double real_pixel;
-	double imaginary_pixel;
+	int set;
 
 	y = -1;
 	while (++y < HEIGHT)
@@ -56,9 +50,13 @@ void	render_mandelbrot(t_fractal *f)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			real_pixel = f->real_min + (double)x * (f->real_max - f->real_min) / WIDTH;
-			imaginary_pixel = f->imaginary_min + (double)y * (f->imaginary_max - f->imaginary_min) / HEIGHT;
-			mandelbrot(f, x, y, real_pixel, imaginary_pixel); //Muitos parametros
+			f->c.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
+			f->c.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
+			set = mandelbrot(f);
+			if (set == 1)
+				my_mlx_pixel_put(f, x, y, 0xF8FFAE);
+			else
+				my_mlx_pixel_put(f, x, y, 0x43C6AC);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);

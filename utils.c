@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:16:52 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/14 00:05:01 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:11:56 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	check(t_fractal *f, int argc, char **argv)
 	else if(ft_strncmp(argv[1], "Julia", 5) == 0 && argc == 4)
 	{
 		f->type = 'j';
-		f->real_k = atof(argv[2]); //criar minha propria atof
-		f->imaginary_k = atof(argv[3]); //criar minha propria atof
+		f->k.r = atof(argv[2]); //criar minha propria atof
+		f->k.i = atof(argv[3]); //criar minha propria atof
 	}
 	else
 		help();
