@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/16 00:15:19 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/16 20:59:40 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_fractal
 	void		*win;
 	int			max_iterations;
 	char		type;
+	int			zoom;
 	t_data		img;
 	t_complex	c;
 	t_complex	z;
@@ -72,9 +73,10 @@ void	choose(t_fractal *f);
 //hooks
 int close_win(t_fractal *window);
 int key_hook(int key, t_fractal *window);
-int mouse_hook(int key, t_fractal f);
+int mouse_hook(int key, t_fractal *f, int x, int y);
 
-int	zoom_in(t_fractal *f);
-int	zoom_out(t_fractal *f);
+//int	zoom_in(t_fractal *f);
+//int	zoom_out(t_fractal *f);
+int	zoom(t_fractal *f, int x, int y, double value);
 
 #endif

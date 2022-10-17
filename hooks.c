@@ -6,36 +6,38 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:30:23 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/13 22:57:39 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:27:38 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int close_win(t_fractal *window) // Função que fecha a janela e encerra o programa
+int close_win(t_fractal *f) // Função que fecha a janela e encerra o programa
 {
-    mlx_destroy_window(window->mlx, window->win);
+    mlx_destroy_window(f->mlx, f->win);
     exit(EXIT_SUCCESS);
 }
 
-int key_hook(int key, t_fractal *window) // Função que fazer um parser para chamar as ações de acordo com a tecla pressionada
+int key_hook(int key, t_fractal *f) // Função que fazer um parser para chamar as ações de acordo com a tecla pressionada
 {
-    if (key == 53) // ESC
-        close_win(window);
+    if (key == 53 || key == 65307) // ESC
+        close_win(f);
     return (0);
 }
 
-int mouse_hook(int key, t_fractal prog) // Função que fazer um parser para chamar as ações do scroll do mouse
+int mouse_hook(int key, t_fractal *f, int x, int y) // Função que fazer um parser para chamar as ações do scroll do mouse
 {
-    if (key == 4)
+	int flag;
+
+	flag = 0;
+    if (key == 4 && flag == 0)
+		flag = zoom(f, x, y, 1.1);
+	else if(key == 5 && flag == 0)
+		flag = zoom(f, x, y, 0.9);
+	if(flag == 1)
 	{
-		zoom_in(&prog);
-//		write_fractal(&prog, "mandelbrot");
-	}
-	else if(key == 5)
-	{
-		zoom_out(&prog);
-		//write_fractal
+		mlx_clear_window(f->mlx, f->win);
+		choose(f);
 	}
     return (0);
 }
