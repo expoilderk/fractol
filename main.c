@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:40:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/16 18:59:57 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:28:16 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	init(t_fractal *init)
 	init->max.r = 2;
 	init->min.i = -2.0;
 	init->max.i = 2.0;
-	init->max_iterations = 100;
+	init->max_iterations = 150;
 	init->zoom = 1;
 }

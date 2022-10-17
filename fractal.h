@@ -6,15 +6,15 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/17 14:13:09 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:24:57 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTAL_H
 # define FRACTAL_H
 
-# define HEIGHT 600
-# define WIDTH 600
+# define HEIGHT 900
+# define WIDTH 900
 
 # include "mlx/mlx_mac/mlx.h"
 # include "mlx/mlx_linux/mlx.h"
@@ -78,5 +78,6 @@ int mouse_hook(int key, int x, int y, t_fractal *f);
 //int	zoom_in(t_fractal *f);
 //int	zoom_out(t_fractal *f);
 int	zoom(t_fractal *f, int x, int y, double value);
+int	color(t_fractal *f, int iterations);
 
 #endif

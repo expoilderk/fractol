@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom.c                                             :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:03:18 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/17 14:26:24 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:22:20 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,13 @@ int	zoom(t_fractal *f, int x, int y, double zoom)
 	f->max.i = new.i + (f->max.i - new.i) * zoom;
 	f->zoom++;
 	return (1);
+}
+
+int	color(t_fractal *f, int iterations)
+{
+	if(iterations == f->max_iterations)
+		return (0x000000);
+	else
+		return (0xFFFFFF * iterations / f->zoom);
+	return (0);
 }
