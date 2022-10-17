@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/16 20:59:40 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/17 14:13:09 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	choose(t_fractal *f);
 //hooks
 int close_win(t_fractal *window);
 int key_hook(int key, t_fractal *window);
-int mouse_hook(int key, t_fractal *f, int x, int y);
+int mouse_hook(int key, int x, int y, t_fractal *f);
 
 //int	zoom_in(t_fractal *f);
 //int	zoom_out(t_fractal *f);
