@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:30:23 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/17 20:15:14 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:30:07 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int mouse_hook(int key, int x, int y, t_fractal *f)
 	if(flag == 1)
 	{
 		mlx_clear_window(f->mlx, f->win);
-		choose(f);
+		choose_fractol(f);
 	}
     return (0);
 }

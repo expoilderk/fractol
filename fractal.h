@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/17 20:24:57 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:28:54 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	init(t_fractal *f);
 void	check(t_fractal *f, int argc, char **argv);
 void	help();
 void	my_mlx_pixel_put(t_fractal *f, int x, int y, int color);
-void	choose(t_fractal *f);
+void	choose_fractol(t_fractal *f);
+void	set_julia(t_fractal *f, char *argv);
 
 //hooks
 int close_win(t_fractal *window);

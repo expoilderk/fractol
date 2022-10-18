@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:40:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/17 19:28:16 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:29:07 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	check(&f, argc, argv);
 	init(&f);
-	choose(&f);
+	choose_fractol(&f);
 	mlx_hook(f.win, 17, 0, close_win, &f);
     mlx_key_hook(f.win, key_hook, &f);
 	mlx_mouse_hook(f.win, mouse_hook, &f);
