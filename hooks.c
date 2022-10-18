@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:30:23 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/18 14:30:07 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:53:49 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int key_hook(int key, t_fractal *f)
 {
     if (key == 53 || key == 65307)
         close_win(f);
+	else if(key >= 123 && key <= 126)
+		move(key, f, 0.10);
     return (0);
 }
 
