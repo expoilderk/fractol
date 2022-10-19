@@ -6,13 +6,13 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:20:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 01:33:56 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:52:18 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	calc_burningship(t_fractal *f)
+int	calc_burningship(t_fractol *f)
 {
 	int		it;
 	double	temp;
@@ -31,7 +31,7 @@ int	calc_burningship(t_fractal *f)
 	return (it);
 }
 
-void	render_burningship(t_fractal *f)
+void	render_burningship(t_fractol *f)
 {
 	int x;
 	int y;
@@ -50,4 +50,5 @@ void	render_burningship(t_fractal *f)
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
+	mlx_string_put(f->mlx, f->win, 10, 20, 0x000000, "HELP CONTROLS: H");
 }

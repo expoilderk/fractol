@@ -3,7 +3,8 @@ HEADER = fractal.h
 LIBFT = libft
 OS = $(shell uname)
 
-SRC = $(wildcard *.c)
+SRC = main.c actions.c hooks.c help.c utils.c \
+	  mandelbrot.c julia.c burningship.c
 
 OBJ = $(SRC:.c=.o)
 

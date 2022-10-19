@@ -6,13 +6,13 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:20:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/18 13:31:14 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:56:53 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	mandelbrot(t_fractal *f)
+int	calc_mandelbrot(t_fractol *f)
 {
 	int		it;
 	double	temp;
@@ -31,7 +31,7 @@ int	mandelbrot(t_fractal *f)
 	return (it);
 }
 
-void	render_mandelbrot(t_fractal *f)
+void	render_mandelbrot(t_fractol *f)
 {
 	int x;
 	int y;
@@ -45,9 +45,10 @@ void	render_mandelbrot(t_fractal *f)
 		{
 			f->c.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
 			f->c.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
-			it = mandelbrot(f);
+			it = calc_mandelbrot(f);
 			my_mlx_pixel_put(f, x, y, color(f, it));
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
+	mlx_string_put(f->mlx, f->win, 10, 20, 0x000000, "HELP CONTROLS: H");
 }

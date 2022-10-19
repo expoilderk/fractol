@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:03:18 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 01:09:50 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:49:05 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	zoom(t_fractal *f, int x, int y, double zoom)
+void	zoom(t_fractol *f, int x, int y, double zoom)
 {
 	t_complex new;
 
@@ -22,40 +22,40 @@ int	zoom(t_fractal *f, int x, int y, double zoom)
 	f->max.r = new.r + (f->max.r - new.r) * zoom;
 	f->min.i = new.i + (f->min.i - new.i) * zoom;
 	f->max.i = new.i + (f->max.i - new.i) * zoom;
-	f->zoom++;
-	return (1);
+	f->shift++;
 }
 
-void	move(int key, t_fractal *f, double move)
+void	move(t_fractol *f, double move)
 {
-	if(key == LEFT)
+	if(f->key == LEFT)
 	{
 		f->min.r -= move;
 		f->max.r -= move;
 	}
-	else if(key == RIGHT)
+	else if(f->key == RIGHT)
 	{
 		f->min.r += move;
 		f->max.r += move;
 	}
-	else if(key == UP)
+	else if(f->key == UP)
 	{
 		f->min.i -= move;
 		f->max.i -= move;
 	}
-	else if(key == DOWN)
+	else if(f->key == DOWN)
 	{
 		f->min.i += move;
 		f->max.i += move;
 	}
+	mlx_clear_window(f->mlx, f->win);
 	choose_fractol(f);
 }
 
-int	color(t_fractal *f, int iterations)
+int	color(t_fractol *f, int iterations)
 {
 	if(iterations == f->max_iterations)
 		return (0x000000);
 	else
-		return (0xFFFFFF * iterations / f->zoom);
+		return (0xFFFFFF * iterations / f->shift);
 	return (0);
 }

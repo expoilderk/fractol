@@ -6,13 +6,13 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:30:39 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/18 14:30:55 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:52:20 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	julia(t_fractal *f)
+int	calc_julia(t_fractol *f)
 {
 	int		it;
 	double	temp;
@@ -29,7 +29,7 @@ int	julia(t_fractal *f)
 	return (it);
 }
 
-void	render_julia(t_fractal *f)
+void	render_julia(t_fractol *f)
 {
 	int x;
 	int y;
@@ -43,9 +43,40 @@ void	render_julia(t_fractal *f)
 		{
 			f->z.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
 			f->z.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
-			it = julia(f);
+			it = calc_julia(f);
 			my_mlx_pixel_put(f, x, y, color(f, it));
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
+	mlx_string_put(f->mlx, f->win, 10, 20, 0x000000, "HELP CONTROLS: H");
 }
+
+void	set_julia(t_fractol *f, char *argv)
+{
+	int n;
+
+	n = ft_atoi(argv);
+	if(n == 1)
+	{
+		f->k.r = -0.74543;
+		f->k.i = 0.11301;
+	}
+	else if(n == 2)
+	{
+		f->k.r = 0.285;
+		f->k.i = 0.01;
+	}
+	else if(n == 3)
+	{
+		f->k.r = -0.4;
+		f->k.i = 0.6;
+	}
+	else if(n == 4)
+	{
+		f->k.r = -0.75;
+		f->k.i = 0.11;
+	}
+	else
+		help();
+}
+

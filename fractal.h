@@ -6,24 +6,12 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 01:32:29 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:49:02 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTAL_H
 # define FRACTAL_H
-
-# define HEIGHT 900
-# define WIDTH 900
-
-# define LEFT 123
-# define RIGHT 124
-# define DOWN 125
-# define UP 126
-
-# define ESC 53
-# define ESC_L 65307
-
 
 # include "mlx/mlx_mac/mlx.h"
 # include "mlx/mlx_linux/mlx.h"
@@ -31,6 +19,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+
+# define HEIGHT 900
+# define WIDTH 900
+
+# define HELP_CONTROLS 4
+# define ESC 53
+# define ESC_L 65307
+# define LEFT 123
+# define RIGHT 124
+# define DOWN 125
+# define UP 126
+# define SCROLL_UP 5
+# define SCROLL_DOWN 4
 
 typedef struct	s_data 
 {
@@ -47,53 +48,57 @@ typedef struct s_complex
 	double	i;
 } t_complex;
 
-typedef struct s_fractal
+typedef struct s_fractol
 {
 	void		*mlx;
 	void		*win;
 	int			max_iterations;
 	char		type;
-	int			zoom;
+	int			shift;
+	int			key;
+	int			flag;
 	t_data		img;
 	t_complex	c;
 	t_complex	z;
 	t_complex	k;
 	t_complex	max;
 	t_complex	min;
-} t_fractal;
+} t_fractol;
 
 
 // Mandelbrot
-int		mandelbrot(t_fractal *f);
-void	render_mandelbrot(t_fractal *f);
+int		calc_mandelbrot(t_fractol *f);
+void	render_mandelbrot(t_fractol *f);
 
 // Julia
-int		julia(t_fractal *f);
-void	render_julia(t_fractal *f);
+int		calc_julia(t_fractol *f);
+void	render_julia(t_fractol *f);
+void	set_julia(t_fractol *f, char *argv);
 
 // Burningship
-int	calc_burningship(t_fractal *f);
-void	render_burningship(t_fractal *f);
+int		calc_burningship(t_fractol *f);
+void	render_burningship(t_fractol *f);
 
 // Fractol
-void	init(t_fractal *f);
+void	init_fractol(t_fractol *f);
+
+// Help
+void	help();
+void	help_controls();
+
+// Actions
+void	zoom(t_fractol *f, int x, int y, double value);
+void	move(t_fractol *f, double move);
+int		color(t_fractol *f, int iterations);
+
+// Hooks
+int		close_win(t_fractol *window);
+int		key_hook(int key, t_fractol *window);
+int		mouse_hook(int key, int x, int y, t_fractol *f);
 
 // Utils
-void	check(t_fractal *f, int argc, char **argv);
-void	help();
-void	my_mlx_pixel_put(t_fractal *f, int x, int y, int color);
-void	choose_fractol(t_fractal *f);
-void	set_julia(t_fractal *f, char *argv);
-
-//hooks
-int close_win(t_fractal *window);
-int key_hook(int key, t_fractal *window);
-int mouse_hook(int key, int x, int y, t_fractal *f);
-
-//int	zoom_in(t_fractal *f);
-//int	zoom_out(t_fractal *f);
-int	zoom(t_fractal *f, int x, int y, double value);
-int	color(t_fractal *f, int iterations);
-void	move(int key, t_fractal *f, double move);
+void	check(t_fractol *f, int argc, char **argv);
+void	choose_fractol(t_fractol *f);
+void	my_mlx_pixel_put(t_fractol *f, int x, int y, int color);
 
 #endif
