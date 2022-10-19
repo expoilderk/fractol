@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:03:18 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/18 15:59:26 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 01:09:50 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,27 @@ int	zoom(t_fractal *f, int x, int y, double zoom)
 
 void	move(int key, t_fractal *f, double move)
 {
-	f->min.r -= move;
-	f->max.r -= move;
-
-//if()
-//	f->min.r -= move;
-//	f->max.r -= move;
-
-//	f->min.i -= move;
-//	f->max.i += move;
-
-//fazer ifs para cada setinha
+	if(key == LEFT)
+	{
+		f->min.r -= move;
+		f->max.r -= move;
+	}
+	else if(key == RIGHT)
+	{
+		f->min.r += move;
+		f->max.r += move;
+	}
+	else if(key == UP)
+	{
+		f->min.i -= move;
+		f->max.i -= move;
+	}
+	else if(key == DOWN)
+	{
+		f->min.i += move;
+		f->max.i += move;
+	}
 	choose_fractol(f);
-
 }
 
 int	color(t_fractal *f, int iterations)

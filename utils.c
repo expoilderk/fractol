@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:16:52 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/18 14:32:45 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/19 01:31:49 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	check(t_fractal *f, int argc, char **argv)
 		help();
 	if(ft_strncmp(argv[1], "Mandelbrot", 10) == 0 && argc == 2)
 		f->type = 'm';
+	if(ft_strncmp(argv[1], "Burningship", 11) == 0 && argc == 2)
+		f->type = 'b';
 	else if(ft_strncmp(argv[1], "Julia", 5) == 0 && argc == 3)
 	{
 		f->type = 'j';
@@ -27,10 +29,12 @@ void	check(t_fractal *f, int argc, char **argv)
 		help();
 }
 
-void	choose_fractol(t_fractal *f) //choose_fractol
+void	choose_fractol(t_fractal *f)
 {
 	if(f->type == 'm')
 		render_mandelbrot(f);
+	else if(f->type == 'b')
+		render_burningship(f);
 	else if(f->type == 'j')
 		render_julia(f);
 }
