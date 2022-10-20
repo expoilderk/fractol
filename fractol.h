@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/20 15:03:04 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:15:41 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,12 @@ typedef struct s_fractol
 	t_complex	min;
 }	t_fractol;
 
-// Mandelbrot
-int		calc_mandelbrot(t_fractol *f);
-void	render_mandelbrot(t_fractol *f);
-
-// Julia
-int		calc_julia(t_fractol *f);
-void	render_julia(t_fractol *f);
-void	set_julia(t_fractol *f, char *argv);
-
-// Burningship
-int		calc_burningship(t_fractol *f);
-void	render_burningship(t_fractol *f);
-
 // Fractol
 void	init_fractol(t_fractol *f);
+int		calc_mandelbrot(t_fractol *f);
+int		calc_burningship(t_fractol *f);
+int		calc_julia(t_fractol *f);
+void	set_julia(t_fractol *f, char *argv);
 
 // Help
 void	help(void);
@@ -98,6 +89,7 @@ int		mouse_hook(int key, int x, int y, t_fractol *f);
 // Utils
 void	check(t_fractol *f, int argc, char **argv);
 void	choose_fractol(t_fractol *f);
+void	render(t_fractol *f, int (*calc)(t_fractol *f));
 void	my_mlx_pixel_put(t_fractol *f, int x, int y, int color);
 
 #endif

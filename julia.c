@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:30:39 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/20 14:25:41 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:14:12 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,6 @@ int	calc_julia(t_fractol *f)
 		f->z.i = temp;
 	}
 	return (it);
-}
-
-void	render_julia(t_fractol *f)
-{
-	int	x;
-	int	y;
-	int	it;
-
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-		{
-			f->z.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
-			f->z.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
-			it = calc_julia(f);
-			my_mlx_pixel_put(f, x, y, color(f, it));
-		}
-	}
-	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
-	mlx_string_put(f->mlx, f->win, 10, 20, 0x000000, "HELP CONTROLS: H");
 }
 
 void	set_julia(t_fractol *f, char *argv)

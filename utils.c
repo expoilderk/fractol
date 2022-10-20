@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:16:52 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/20 14:43:41 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:18:33 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,39 @@ void	check(t_fractol *f, int argc, char **argv)
 void	choose_fractol(t_fractol *f)
 {
 	if (f->type == 'm')
-		render_mandelbrot(f);
+		render(f, calc_mandelbrot);
 	else if (f->type == 'b')
-		render_burningship(f);
+		render(f, calc_burningship);
 	else if (f->type == 'j')
-		render_julia(f);
+		render(f, calc_julia);
+}
+
+void	render(t_fractol *f, int (*calc)(t_fractol *f))
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+		{
+			if (f->type == 'j')
+			{
+				f->z.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
+				f->z.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
+			}
+			else
+			{
+				f->c.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
+				f->c.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
+			}
+			my_mlx_pixel_put(f, x, y, color(f, calc(f)));
+		}
+	}
+	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
+	mlx_string_put(f->mlx, f->win, 10, 20, 0x000000, "HELP CONTROLS: H");
 }
 
 void	my_mlx_pixel_put(t_fractol *f, int x, int y, int color)

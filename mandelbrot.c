@@ -6,7 +6,7 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:20:56 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/20 14:29:16 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:15:47 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,4 @@ int	calc_mandelbrot(t_fractol *f)
 		f->z.i = temp;
 	}
 	return (it);
-}
-
-void	render_mandelbrot(t_fractol *f)
-{
-	int	x;
-	int	y;
-	int	it;
-
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-		{
-			f->c.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
-			f->c.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
-			it = calc_mandelbrot(f);
-			my_mlx_pixel_put(f, x, y, color(f, it));
-		}
-	}
-	mlx_put_image_to_window(f->mlx, f->win, f->img.img, 0, 0);
-	mlx_string_put(f->mlx, f->win, 10, 20, 0x000000, "HELP CONTROLS: H");
 }
