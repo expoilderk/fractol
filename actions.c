@@ -6,15 +6,15 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:03:18 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 16:49:05 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:02:37 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 void	zoom(t_fractol *f, int x, int y, double zoom)
 {
-	t_complex new;
+	t_complex	new;
 
 	new.r = f->min.r + (double)x * (f->max.r - f->min.r) / WIDTH;
 	new.i = f->min.i + (double)y * (f->max.i - f->min.i) / HEIGHT;
@@ -27,22 +27,22 @@ void	zoom(t_fractol *f, int x, int y, double zoom)
 
 void	move(t_fractol *f, double move)
 {
-	if(f->key == LEFT)
+	if (f->key == LEFT)
 	{
 		f->min.r -= move;
 		f->max.r -= move;
 	}
-	else if(f->key == RIGHT)
+	else if (f->key == RIGHT)
 	{
 		f->min.r += move;
 		f->max.r += move;
 	}
-	else if(f->key == UP)
+	else if (f->key == UP)
 	{
 		f->min.i -= move;
 		f->max.i -= move;
 	}
-	else if(f->key == DOWN)
+	else if (f->key == DOWN)
 	{
 		f->min.i += move;
 		f->max.i += move;
@@ -53,7 +53,7 @@ void	move(t_fractol *f, double move)
 
 int	color(t_fractol *f, int iterations)
 {
-	if(iterations == f->max_iterations)
+	if (iterations == f->max_iterations)
 		return (0x000000);
 	else
 		return (0xFFFFFF * iterations / f->shift);

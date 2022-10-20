@@ -6,11 +6,11 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:30:39 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 16:52:20 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:25:41 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 int	calc_julia(t_fractol *f)
 {
@@ -20,7 +20,7 @@ int	calc_julia(t_fractol *f)
 	it = -1;
 	while (++it < f->max_iterations)
 	{
-		if((f->z.r * f->z.r + f->z.i * f->z.i) > 4)
+		if ((f->z.r * f->z.r + f->z.i * f->z.i) > 4)
 			break ;
 		temp = 2 * f->z.r * f->z.i + f->k.i;
 		f->z.r = f->z.r * f->z.r - f->z.i * f->z.i + f->k.r;
@@ -31,9 +31,9 @@ int	calc_julia(t_fractol *f)
 
 void	render_julia(t_fractol *f)
 {
-	int x;
-	int y;
-	int it;
+	int	x;
+	int	y;
+	int	it;
 
 	y = -1;
 	while (++y < HEIGHT)
@@ -53,25 +53,25 @@ void	render_julia(t_fractol *f)
 
 void	set_julia(t_fractol *f, char *argv)
 {
-	int n;
+	int	n;
 
 	n = ft_atoi(argv);
-	if(n == 1)
+	if (n == 1)
 	{
 		f->k.r = -0.74543;
 		f->k.i = 0.11301;
 	}
-	else if(n == 2)
+	else if (n == 2)
 	{
 		f->k.r = 0.285;
 		f->k.i = 0.01;
 	}
-	else if(n == 3)
+	else if (n == 3)
 	{
 		f->k.r = -0.4;
 		f->k.i = 0.6;
 	}
-	else if(n == 4)
+	else if (n == 4)
 	{
 		f->k.r = -0.75;
 		f->k.i = 0.11;
@@ -79,4 +79,3 @@ void	set_julia(t_fractol *f, char *argv)
 	else
 		help();
 }
-

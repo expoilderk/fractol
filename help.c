@@ -6,13 +6,13 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:14:49 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 16:49:10 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:19:39 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
-void	help()
+void	help(void)
 {
 	ft_printf("/* **************************************************** */\n");
 	ft_printf("/*                                                      */\n");
@@ -31,7 +31,7 @@ void	help()
 	exit(EXIT_FAILURE);
 }
 
-void	help_controls()
+void	help_controls(void)
 {
 	ft_printf("/********************************************************/\n");
 	ft_printf("/*                                                      */\n");
@@ -49,4 +49,3 @@ void	help_controls()
 	ft_printf("/*                                                      */\n");
 	ft_printf("/* **************************************************** */\n");
 }
-

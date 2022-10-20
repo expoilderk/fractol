@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal.h                                          :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/19 16:49:02 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:03:04 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTAL_H
-# define FRACTAL_H
+#ifndef FRACTOL_H
+# define FRACT0L_H
 
 # include "mlx/mlx_mac/mlx.h"
 # include "mlx/mlx_linux/mlx.h"
@@ -33,20 +33,20 @@
 # define SCROLL_UP 5
 # define SCROLL_DOWN 4
 
-typedef struct	s_data 
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp;
 	int		line_length;
 	int		endian;
-} t_data;
+}	t_data;
 
 typedef struct s_complex
 {
 	double	r;
 	double	i;
-} t_complex;
+}	t_complex;
 
 typedef struct s_fractol
 {
@@ -63,8 +63,7 @@ typedef struct s_fractol
 	t_complex	k;
 	t_complex	max;
 	t_complex	min;
-} t_fractol;
-
+}	t_fractol;
 
 // Mandelbrot
 int		calc_mandelbrot(t_fractol *f);
@@ -83,8 +82,8 @@ void	render_burningship(t_fractol *f);
 void	init_fractol(t_fractol *f);
 
 // Help
-void	help();
-void	help_controls();
+void	help(void);
+void	help_controls(void);
 
 // Actions
 void	zoom(t_fractol *f, int x, int y, double value);
