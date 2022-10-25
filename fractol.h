@@ -6,12 +6,12 @@
 /*   By: mreis-me <mreis-me@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:28:02 by mreis-me          #+#    #+#             */
-/*   Updated: 2022/10/20 16:15:41 by mreis-me         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:51:34 by mreis-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
-# define FRACT0L_H
+# define FRACTOL_H
 
 # include "mlx/mlx_mac/mlx.h"
 # include "mlx/mlx_linux/mlx.h"
